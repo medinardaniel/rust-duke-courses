@@ -36,13 +36,15 @@ async fn get_value(info: web::Query<Query>) -> impl Responder {
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
+    // Retrieve the port number from the environment variable
+    let port = std::env::var("PORT").unwrap_or_else(|_| "8080".to_string()); // Default to port 8080 if not set
+
     HttpServer::new(|| {
         App::new()
             .route("/", web::get().to(HttpResponse::Ok))
             .route("/get_value", web::get().to(get_value))
     })
-    .bind("0.0.0.0:8080")?
+    .bind(format!("0.0.0.0:{}", port))? // Bind to the port provided by Heroku
     .run()
     .await
 }
-
