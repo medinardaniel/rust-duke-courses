@@ -1,5 +1,5 @@
 [package]
-name = "rust-duke-courses"
+name = "rust_duke_courses"
 version = "0.1.0"
 edition = "2021"
 

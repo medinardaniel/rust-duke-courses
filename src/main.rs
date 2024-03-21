@@ -10,12 +10,12 @@ struct Query {
 }
 
 async fn get_value(info: web::Query<Query>) -> impl Responder {
-    let file_path = "class_data.json"; // Path to the JSON file
+    let file_path = "/usr/src/rust_duke_courses/class_data.json";
     println!("Attempting to open file at: {}", file_path);
     println!("Current directory: {:?}", std::env::current_dir());
     let mut file = match File::open(file_path) {
         Ok(file) => file,
-        Err(_) => return HttpResponse::InternalServerError().body("File not found"),
+        Err(_) => return HttpResponse::InternalServerError().body("Courses file not found"),
     };
 
     let mut contents = String::new();
@@ -41,7 +41,7 @@ async fn main() -> std::io::Result<()> {
             .route("/", web::get().to(HttpResponse::Ok))
             .route("/get_value", web::get().to(get_value))
     })
-    .bind("127.0.0.1:8080")?
+    .bind("0.0.0.0:8080")?
     .run()
     .await
 }
