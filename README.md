@@ -4,6 +4,8 @@
 
 By Daniel Medina
 
+Video Demo: https://youtu.be/aStF3MiCwaI
+
 ## Objective
 
 The objective of this project is to build a simple Rust Actix web service and deploy it for experimentation and learning purposes. This project serves as a demonstration of how to develop microservices using Rust and Actix, containerize them using Docker, and deploy to Heroku with continuous integration and continuous deployment (CI/CD) pipeline via GitHub Actions.
