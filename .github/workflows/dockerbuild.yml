@@ -3,7 +3,7 @@ name: Build, Push and Deploy Docker to Heroku
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build-push-deploy:
